@@ -59,6 +59,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - croth1
     - nick-youngblut
     - johanneskoester
     - bgruening
