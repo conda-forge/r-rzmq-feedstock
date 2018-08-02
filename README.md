@@ -14,14 +14,16 @@ Summary: Interface to the 'ZeroMQ' lightweight messaging kernel (see <http://www
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-rzmq-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-rzmq-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-rzmq-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-rzmq-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-rzmq-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-rzmq-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-rzmq-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-rzmq-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-rzmq-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-rzmq-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-rzmq-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-rzmq-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rzmq/badges/version.svg)](https://anaconda.org/conda-forge/r-rzmq)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rzmq/badges/downloads.svg)](https://anaconda.org/conda-forge/r-rzmq)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--rzmq-green.svg)](https://anaconda.org/conda-forge/r-rzmq) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-rzmq.svg)](https://anaconda.org/conda-forge/r-rzmq) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-rzmq.svg)](https://anaconda.org/conda-forge/r-rzmq) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-rzmq.svg)](https://anaconda.org/conda-forge/r-rzmq) |
 
 Installing r-rzmq
 =================
