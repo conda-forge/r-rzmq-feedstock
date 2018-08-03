@@ -1,0 +1,13 @@
+c_compiler:
+- toolchain_c
+cxx_compiler:
+- toolchain_cxx
+pin_run_as_build:
+  r-base:
+    max_pin: x.x.x
+  zeromq:
+    max_pin: x.x
+r_base:
+- 3.4.1
+zeromq:
+- 4.2.5
