@@ -1,5 +1,4 @@
-{% set version = "0.9.3" %}
-
+{% set version = '0.9.4' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,46 +9,50 @@ package:
 source:
   fn: rzmq_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rzmq_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rzmq/rzmq_{{ version }}.tar.gz
-
-
-  sha256: ab6f6da1fcd0c11003517a21bd85f5c56495e6926542db3fb320f3901f292b13
+    - {{ cran_mirror }}/src/contrib/rzmq_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rzmq/rzmq_{{ version }}.tar.gz
+  sha256: 03fbda756d823c11fba359b94a6213c3440e61973331668eaac35779717f73ad
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-
+  number: 0
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: True  # [win32]
-
 
 requirements:
   build:
-    - posix                # [win]
-    - pkg-config           # [unix]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}sed  # [win]
+    - {{posix}}coreutils  # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - zeromq               # [not win]
-    - {{native}}zeromq     # [win]
+    - zeromq                     # [not win]
+    - {{native}}zeromq           # [win]
 
   run:
     - r-base
-    - zeromq               # [not win]
-    - {{native}}zeromq     # [win]
+    - zeromq                     # [not win]
+    - {{native}}zeromq           # [win]
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('rzmq')"  # [not win]
+    - $R -e "library('rzmq')"           # [not win]
     - "\"%R%\" -e \"library('rzmq')\""  # [win]
-
-
 
 about:
   home: http://github.com/ropensci/rzmq
@@ -57,9 +60,15 @@ about:
   summary: Interface to the 'ZeroMQ' lightweight messaging kernel (see <http://www.zeromq.org/>
     for more information).
   license_family: GPL3
-
-
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - croth1
+    - johanneskoester
+    - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
