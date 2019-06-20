@@ -1,7 +1,7 @@
 About r-rzmq
 ============
 
-Home: http://github.com/ropensci/rzmq
+Home: http://github.com/ropensci/rzmq#readme (devel) http://www.zeromq.org (upstream)
 
 Package license: GPL-3
 
