@@ -1,4 +1,4 @@
-{% set version = '0.9.6' %}
+{% set version = "0.9.7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rzmq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rzmq/rzmq_{{ version }}.tar.gz
-  sha256: 80a3fc6eb6f7851224c4cd5e219ca4db0286551ad429359d4df853ccb9234316
+  sha256: 5f47b67b75fd4a230780406f7a55a3708ce8c014cff755a809a6bfa1a6925a45
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
