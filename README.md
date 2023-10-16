@@ -3,6 +3,7 @@ About r-rzmq-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rzmq-feedstock/blob/main/LICENSE.txt)
 
+
 About r-rzmq
 ------------
 
@@ -11,6 +12,7 @@ Home: http://github.com/ropensci/rzmq#readme (devel) http://www.zeromq.org (upst
 Package license: GPL-3.0-only
 
 Summary: Interface to the 'ZeroMQ' lightweight messaging kernel (see <http://www.zeromq.org/> for more information).
+
 About r-rzmq
 ------------
 
