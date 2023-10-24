@@ -1,4 +1,4 @@
-{% set version = "0.9.8" %}
+{% set version = "0.9.11" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,21 +10,22 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rzmq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rzmq/rzmq_{{ version }}.tar.gz
-  sha256: 815a7eb502b1da3a84246b2dfb6594ca3f241a8675783e6bcdbbf9c952ec1c53
+  sha256: 315facbc739be0e8679751fb22f427be66475a77b8344b60a18d14ec48e9009a
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  skip: true              # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -37,11 +38,11 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - zeromq                     # [not win]
+    - zeromq                       # [not win]
     - {{ native }}zeromq           # [win]
   run:
     - r-base
-    - zeromq                     # [not win]
+    - zeromq                       # [not win]
     - {{ native }}zeromq           # [win]
     - {{ native }}gcc-libs         # [win]
 
@@ -51,7 +52,8 @@ test:
     - "\"%R%\" -e \"library('rzmq')\""  # [win]
 
 about:
-  home: http://github.com/ropensci/rzmq#readme (devel) http://www.zeromq.org (upstream)
+  home: http://www.zeromq.org
+  dev_url: http://github.com/ropensci/rzmq
   license: GPL-3.0-only
   summary: Interface to the 'ZeroMQ' lightweight messaging kernel (see <http://www.zeromq.org/> for more information).
   license_family: GPL3
@@ -62,20 +64,3 @@ extra:
   recipe-maintainers:
     - conda-forge/r
     - croth1
-
-# Package: rzmq
-# Title: R Bindings for 'ZeroMQ'
-# Version: 0.9.6
-# Authors@R: c( person("Whit", "Armstrong", , "armstrong.whit@gmail.com", role = "aut"), person("Michael", "Schubert", role = "ctb"), person("Jeroen", "Ooms", , "jeroen@berkeley.edu", role = c("aut", "cre")))
-# Description: Interface to the 'ZeroMQ' lightweight messaging kernel (see <http://www.zeromq.org/> for more information).
-# License: GPL-3
-# Depends: R (>= 3.1.0)
-# SystemRequirements: ZeroMQ >= 3.0.0: libzmq3-dev (deb) or zeromq-devel (rpm)
-# URL: http://github.com/ropensci/rzmq#readme (devel) http://www.zeromq.org (upstream)
-# BugReports: http://github.com/ropensci/rzmq/issues
-# NeedsCompilation: yes
-# Packaged: 2019-03-01 17:07:50 UTC; jeroen
-# Author: Whit Armstrong [aut], Michael Schubert [ctb], Jeroen Ooms [aut, cre]
-# Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
-# Repository: CRAN
-# Date/Publication: 2019-03-01 21:50:09 UTC
