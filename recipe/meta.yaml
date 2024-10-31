@@ -53,7 +53,7 @@ test:
     - $R -e "library('rzmq')"           # [not win]
     - $R -f tests/poll.R                # [not win]
     - "\"%R%\" -e \"library('rzmq')\""  # [win]
-    - "\"%R%\" -r tests/poll.R"         # [win]
+    - "\"%R%\" -f tests/poll.R"         # [win]
 
 about:
   home: http://www.zeromq.org
