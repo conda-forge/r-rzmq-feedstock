@@ -1,6 +1,5 @@
 {% set version = "0.9.14" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rzmq
@@ -13,9 +12,9 @@ source:
   sha256: eca969e8cd27453341a3344af393b0f229280f0ebca52ff059ca51303295fed9
 
 build:
-  merge_build_host: true  # [win]
-  skip: true  # [win]
-  number: 0
+  # Checking windows to see if it passes. Uncomment the line if it fails.
+  # skip: true  # [win]
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -34,19 +33,18 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - pkg-config
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
     - r-base
     - zeromq                       # [not win]
-    - {{ native }}zeromq           # [win]
+    - zeromq           # [win]
   run:
     - r-base
     - zeromq                       # [not win]
-    - {{ native }}zeromq           # [win]
-    - {{ native }}gcc-libs         # [win]
+    - zeromq           # [win]
 
 test:
   source_files:
@@ -55,7 +53,7 @@ test:
     - $R -e "library('rzmq')"           # [not win]
     - $R -f tests/poll.R                # [not win]
     - "\"%R%\" -e \"library('rzmq')\""  # [win]
-    - "\"%R%\" -r tests/poll.R"         # [win]
+    - "\"%R%\" -f tests/poll.R"         # [win]
 
 about:
   home: http://www.zeromq.org
